@@ -1,1 +1,0 @@
-# yjnmedia.github.io
