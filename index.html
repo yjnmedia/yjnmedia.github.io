@@ -1,244 +1,452 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>易将南传媒 | 品牌增长与内容营销</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>易将南传媒 | 新媒体传播与内容增长</title>
+  <style>
+    :root {
+      --bg: #070b1a;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-border: rgba(255, 255, 255, 0.14);
+      --text: #eaf0ff;
+      --muted: #b0bddf;
+      --brand: #4ec8ff;
+      --brand-2: #7a7dff;
+      --success: #42e6b8;
+      --warning: #ffd166;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
 
-<style>
-:root {
-  --bg: #070b1a;
-  --panel: rgba(255,255,255,0.05);
-  --text: #eaf0ff;
-  --muted: #9fb0d9;
-  --brand: #4ec8ff;
-  --brand2: #7a7dff;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:"Microsoft YaHei";
-  background:
-  radial-gradient(circle at 20% 10%,#1a2d5a 0%,transparent 40%),
-  linear-gradient(#05070f,#0a1126);
-  color:var(--text);
-}
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 120px;
+    }
 
-/* ===== 导航 ===== */
-header{
-  position:fixed;
-  top:0;width:100%;
-  backdrop-filter:blur(12px);
-  background:rgba(0,0,0,0.4);
-  z-index:99;
-}
-.container{width:92%;max-width:1100px;margin:auto;}
+    body {
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, #162853 0%, transparent 45%),
+        radial-gradient(circle at 85% 12%, #382966 0%, transparent 40%),
+        linear-gradient(135deg, #05070f 0%, #0a1126 100%);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-.header-inner{
-  display:flex;justify-content:space-between;
-  padding:14px 0;
-}
-nav a{
-  color:#aaa;margin-left:15px;text-decoration:none;
-}
-nav a.active{color:#fff;border-bottom:2px solid var(--brand);}
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
 
-/* ===== Hero ===== */
-.hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-}
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(8, 11, 23, 0.65);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-.hero h1{
-  font-size:42px;
-  line-height:1.2;
-}
-.highlight{
-  background:linear-gradient(90deg,var(--brand),#c29bff);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.hero p{
-  margin:15px 0;color:var(--muted);
-}
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      gap: 1rem;
+    }
 
-.btn{
-  display:inline-block;
-  padding:10px 20px;
-  border-radius:30px;
-  margin-right:10px;
-}
-.btn-primary{
-  background:linear-gradient(90deg,var(--brand),var(--brand2));
-}
-.btn-ghost{
-  border:1px solid #aaa;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
 
-/* ===== 卡片 ===== */
-.card{
-  background:var(--panel);
-  padding:20px;
-  border-radius:14px;
-  margin:10px 0;
-  transition:0.3s;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 0 18px rgba(122, 125, 255, 0.9);
+    }
 
-/* ===== 滚动动画 ===== */
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  transition:0.8s;
-}
-.fade.show{
-  opacity:1;
-  transform:none;
-}
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-/* ===== section ===== */
-section{
-  padding:100px 0;
-}
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
 
-h2{margin-bottom:10px;}
-.muted{color:var(--muted);}
+    nav a:hover {
+      color: #fff;
+    }
 
-/* ===== stats ===== */
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-.stat{
-  text-align:center;
-}
+    .hero {
+      padding: 5.8rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
 
-/* ===== 响应式 ===== */
-@media(max-width:768px){
-  .stats{grid-template-columns:1fr 1fr;}
-  .hero h1{font-size:28px;}
-}
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
 
-</style>
+    .highlight {
+      background: linear-gradient(90deg, var(--brand), #c29bff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 48ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.72rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--brand-2), var(--brand));
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(78, 200, 255, 0.35);
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .trend-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+      color: #dce6ff;
+      font-size: 0.95rem;
+    }
+
+    .trend-item:last-child {
+      border-bottom: 0;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      padding: 0.18rem 0.48rem;
+      border-radius: 999px;
+      color: #061125;
+      font-weight: 700;
+    }
+
+    .tag.hot { background: var(--warning); }
+    .tag.rise { background: var(--success); }
+
+    section {
+      margin-bottom: 3.2rem;
+      scroll-margin-top: 120px;
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      margin-bottom: 1rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      max-width: 68ch;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .service-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .service-card h3 {
+      margin-bottom: 0.45rem;
+      font-size: 1.06rem;
+    }
+
+    .case-list {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .case-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 14px;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+    }
+
+    .case-item strong {
+      color: #fff;
+    }
+
+    .contact-box {
+      background: linear-gradient(120deg, rgba(78, 200, 255, 0.14), rgba(122, 125, 255, 0.14));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      padding: 1.3rem;
+    }
+
+    .contact-box p {
+      margin-bottom: 0.45rem;
+      color: #e9f3ff;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 1.6rem 1rem 2.1rem;
+    }
+
+    @media (max-width: 930px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 4.5rem;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .case-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      html {
+        scroll-padding-top: 140px;
+      }
+
+      section {
+        scroll-margin-top: 140px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
   <div class="container header-inner">
-    <div>易将南传媒</div>
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span>易将南传媒</span>
+    </div>
     <nav>
-      <a href="#about">定位</a>
-      <a href="#services">业务</a>
-      <a href="#cases">案例</a>
-      <a href="#contact">联系</a>
+      <a href="#about">公司定位</a>
+      <a href="#services">核心业务</a>
+      <a href="#cases">增长案例</a>
+      <a href="#contact">合作联系</a>
     </nav>
   </div>
 </header>
 
 <main class="container">
-
-<section class="hero" id="about">
-  <div>
-    <h1 class="fade">让品牌在 <span class="highlight">流量时代被放大</span></h1>
-    <p class="fade">我们不是做内容，而是做增长。专注短视频、直播与品牌转化的整合营销团队。</p>
-    <div class="fade">
-      <a class="btn btn-primary">获取方案</a>
-      <a class="btn btn-ghost">查看案例</a>
+  <section class="hero" id="about">
+    <div>
+      <h1>让品牌在 <span class="highlight">新媒体时代</span> 更快被看见</h1>
+      <p>
+        易将南传媒聚焦短视频、直播与社交内容增长，提供从账号定位、内容策划到投放转化的全链路服务，帮助企业实现「内容曝光 + 商业转化」双增长。
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">获取传播方案</a>
+        <a class="btn btn-ghost" href="#cases">查看案例数据</a>
+      </div>
     </div>
-  </div>
-</section>
+    <div class="hero-card">
+      <div class="trend-item"><span>短视频内容策划与拍摄</span><span class="tag hot">HOT</span></div>
+      <div class="trend-item"><span>账号矩阵运营与人群增长</span><span class="tag rise">+128%</span></div>
+      <div class="trend-item"><span>直播带货与品牌专场执行</span><span class="tag hot">TOP</span></div>
+      <div class="trend-item"><span>信息流投放与线索转化</span><span class="tag rise">ROI ↑</span></div>
+    </div>
+  </section>
 
-<section class="fade">
-  <h2>关于我们</h2>
-  <p class="muted">一家以增长为导向的内容营销公司，帮助品牌从0到1建立流量体系。</p>
+  <section>
+    <h2>我们是谁</h2>
+    <p class="muted">
+      易将南传媒有限公司是一家以“内容驱动增长”为核心的新媒体公司。团队成员具备丰富的平台运营经验，擅长结合行业趋势、用户洞察与创意表达，为客户打造高辨识度的品牌内容。
+    </p>
+    <div class="stats">
+      <div class="stat">
+        <strong>300+</strong>
+        <span>服务短视频作品</span>
+      </div>
+      <div class="stat">
+        <strong>50+</strong>
+        <span>行业客户合作</span>
+      </div>
+      <div class="stat">
+        <strong>10+</strong>
+        <span>细分赛道覆盖</span>
+      </div>
+      <div class="stat">
+        <strong>7×12h</strong>
+        <span>实时运营支持</span>
+      </div>
+    </div>
+  </section>
 
-  <div class="stats">
-    <div class="stat"><strong>300+</strong><br>内容产出</div>
-    <div class="stat"><strong>50+</strong><br>合作客户</div>
-    <div class="stat"><strong>10+</strong><br>行业覆盖</div>
-    <div class="stat"><strong>7×12h</strong><br>运营支持</div>
-  </div>
-</section>
+  <section id="services">
+    <h2>核心业务能力</h2>
+    <p class="muted">围绕“内容生产 + 账号运营 + 商业转化”构建一体化服务，匹配企业不同增长阶段需求。</p>
+    <div class="services">
+      <article class="service-card">
+        <h3>新媒体账号代运营</h3>
+        <p>完成从定位梳理、选题库搭建、脚本输出到日常发布复盘，持续提升账号活跃与粉丝黏性。</p>
+      </article>
+      <article class="service-card">
+        <h3>短视频内容创意</h3>
+        <p>根据品牌调性输出系列化内容，兼顾传播性与成交力，打造可持续爆款内容机制。</p>
+      </article>
+      <article class="service-card">
+        <h3>直播营销增长</h3>
+        <p>提供直播间策划、脚本控场、投流配合与数据复盘，帮助品牌放大直播成交效率。</p>
+      </article>
+    </div>
+  </section>
 
-<section id="services">
-  <h2 class="fade">核心业务</h2>
+  <section id="cases">
+    <h2>增长案例示意</h2>
+    <div class="case-list">
+      <article class="case-item">
+        <strong>本地生活品牌 A</strong>
+        <p>3 个月搭建账号矩阵，单月内容曝光提升 220%，门店团购核销增长 3.1 倍。</p>
+      </article>
+      <article class="case-item">
+        <strong>消费品牌 B</strong>
+        <p>通过“短视频种草 + 直播转化”联动，首场直播 GMV 超预期 168%，实现冷启动破圈。</p>
+      </article>
+      <article class="case-item">
+        <strong>制造业品牌 C</strong>
+        <p>从 0 到 1 打造企业 IP，连续 8 周稳定产出行业垂类内容，线索成本下降约 35%。</p>
+      </article>
+    </div>
+  </section>
 
-  <div class="card fade">
-    <h3>账号代运营</h3>
-    <p>从0搭建账号体系，实现持续增长</p>
-  </div>
-
-  <div class="card fade">
-    <h3>短视频创意</h3>
-    <p>打造爆款内容模型</p>
-  </div>
-
-  <div class="card fade">
-    <h3>直播增长</h3>
-    <p>提升转化与成交效率</p>
-  </div>
-</section>
-
-<section id="cases">
-  <h2 class="fade">增长案例</h2>
-
-  <div class="card fade">
-    本地生活品牌A：3 个月搭建账号矩阵，单月内容曝光提升 220%，门店团购核销增长 3.1 倍。
-  </div>
-
-  <div class="card fade">
-    消费品牌B：通过“短视频种草 + 直播转化”联动，首场直播 GMV 超预期 168%，实现冷启动破圈。
-  </div>
-
-  <div class="card fade">
-    制造业品牌C：从 0 到 1 打造企业 IP，连续 8 周稳定产出行业垂类内容，线索成本下降约 35%。
-  </div>
-</section>
-
-<section id="contact" class="fade">
-  <h2>合作联系</h2>
-  <p>电话：17338791468</p>
-  <p>邮箱：yjn0423@126.com</p>
-</section>
-
+  <section id="contact">
+    <h2>合作联系</h2>
+    <div class="contact-box">
+      <p>📞 联系电话：17338791468</p>
+      <p>📧 邮箱：yjn0423@126.com</p>
+      <p>📍 地址：福建省泉州市惠安县周主桥57号</p>
+      <p>💬 欢迎沟通：品牌代运营 / 直播增长 / 企业号孵化合作</p>
+    </div>
+  </section>
 </main>
 
-<script>
-/* ===== 滚动动画 ===== */
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add("show")
-    }
-  })
-})
-
-document.querySelectorAll(".fade").forEach(el=>{
-  observer.observe(el)
-})
-
-/* ===== 导航高亮 ===== */
-const links = document.querySelectorAll("nav a");
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll",()=>{
-  let scrollY = window.scrollY;
-  sections.forEach(sec=>{
-    if(scrollY >= sec.offsetTop-200){
-      links.forEach(a=>a.classList.remove("active"))
-      let id = sec.getAttribute("id")
-      let active = document.querySelector(`nav a[href="#${id}"]`)
-      if(active) active.classList.add("active")
-    }
-  })
-})
-</script>
+<footer>
+  <p>&copy; 2026 易将南传媒有限公司 · All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
