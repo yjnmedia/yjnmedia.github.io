@@ -3,119 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>易将南传媒 | 品牌增长与内容营销</title>
 
 <style>
-:root{
-  --bg:#070b1a;
-  --text:#eaf0ff;
-  --muted:#9fb0e0;
-  --brand:#4ec8ff;
+:root {
+  --bg: #070b1a;
+  --panel: rgba(255,255,255,0.05);
+  --text: #eaf0ff;
+  --muted: #9fb0d9;
+  --brand: #4ec8ff;
+  --brand2: #7a7dff;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-
 body{
   font-family:"Microsoft YaHei";
+  background:
+  radial-gradient(circle at 20% 10%,#1a2d5a 0%,transparent 40%),
+  linear-gradient(#05070f,#0a1126);
   color:var(--text);
-  background:linear-gradient(135deg,#05070f,#0a1126);
 }
 
-/* header */
+/* ===== 导航 ===== */
 header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,.6);
+  position:fixed;
+  top:0;width:100%;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.4);
+  z-index:99;
 }
+.container{width:92%;max-width:1100px;margin:auto;}
 
 .header-inner{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 20px;
+  display:flex;justify-content:space-between;
+  padding:14px 0;
 }
-
 nav a{
-  margin-left:12px;
-  color:#aaa;
-  text-decoration:none;
+  color:#aaa;margin-left:15px;text-decoration:none;
 }
+nav a.active{color:#fff;border-bottom:2px solid var(--brand);}
 
-nav a.active{color:#fff}
-
-/* 容器 */
-.container{
-  width:92%;
-  max-width:1100px;
-  margin:auto;
-}
-
-/* 🔥 关键修复 */
-section{
-  padding:60px 0;
-  scroll-margin-top:100px;
-}
-
-/* 👉 只让首屏居中 */
+/* ===== Hero ===== */
 .hero{
-  min-height:100vh;
+  height:100vh;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
+  align-items:center;
 }
 
-/* 卡片 */
+.hero h1{
+  font-size:42px;
+  line-height:1.2;
+}
+.highlight{
+  background:linear-gradient(90deg,var(--brand),#c29bff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{
+  margin:15px 0;color:var(--muted);
+}
+
+.btn{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:30px;
+  margin-right:10px;
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--brand),var(--brand2));
+}
+.btn-ghost{
+  border:1px solid #aaa;
+}
+
+/* ===== 卡片 ===== */
 .card{
-  background:rgba(255,255,255,.05);
-  border-radius:12px;
-  padding:14px;
-  margin-top:12px;
+  background:var(--panel);
+  padding:20px;
+  border-radius:14px;
+  margin:10px 0;
+  transition:0.3s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* services */
-.services{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-/* cases */
-.case-list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-/* 动画 */
+/* ===== 滚动动画 ===== */
 .fade{
   opacity:0;
   transform:translateY(40px);
-  transition:.6s;
+  transition:0.8s;
 }
 .fade.show{
   opacity:1;
   transform:none;
 }
 
-/* 响应式 */
-@media(max-width:768px){
-  .services{
-    grid-template-columns:1fr;
-  }
+/* ===== section ===== */
+section{
+  padding:100px 0;
 }
+
+h2{margin-bottom:10px;}
+.muted{color:var(--muted);}
+
+/* ===== stats ===== */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.stat{
+  text-align:center;
+}
+
+/* ===== 响应式 ===== */
+@media(max-width:768px){
+  .stats{grid-template-columns:1fr 1fr;}
+  .hero h1{font-size:28px;}
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
+  <div class="container header-inner">
     <div>易将南传媒</div>
     <nav>
-      <a href="#about">公司定位</a>
-      <a href="#services">核心业务</a>
-      <a href="#cases">增长案例</a>
+      <a href="#about">定位</a>
+      <a href="#services">业务</a>
+      <a href="#cases">案例</a>
       <a href="#contact">联系</a>
     </nav>
   </div>
@@ -123,73 +143,101 @@ section{
 
 <main class="container">
 
-<section id="about" class="hero fade">
-  <h1>新媒体内容增长专家</h1>
-  <p>提供从内容到转化的一体化解决方案</p>
-</section>
-
-<section id="services" class="fade">
-  <h2>核心业务</h2>
-  <div class="services">
-    <div class="card">账号代运营</div>
-    <div class="card">短视频创意</div>
-    <div class="card">直播增长</div>
+<section class="hero" id="about">
+  <div>
+    <h1 class="fade">让品牌在 <span class="highlight">流量时代被放大</span></h1>
+    <p class="fade">我们不是做内容，而是做增长。专注短视频、直播与品牌转化的整合营销团队。</p>
+    <div class="fade">
+      <a class="btn btn-primary">获取方案</a>
+      <a class="btn btn-ghost">查看案例</a>
+    </div>
   </div>
 </section>
 
-<section id="cases" class="fade">
-  <h2>增长案例</h2>
-  <div class="case-list">
-    <div class="card">品牌A：曝光+220%</div>
-    <div class="card">品牌B：GMV+168%</div>
-    <div class="card">品牌C：成本-35%</div>
+<section class="fade">
+  <h2>关于我们</h2>
+  <p class="muted">一家以增长为导向的内容营销公司，帮助品牌从0到1建立流量体系。</p>
+
+  <div class="stats">
+    <div class="stat"><strong>300+</strong><br>内容产出</div>
+    <div class="stat"><strong>50+</strong><br>合作客户</div>
+    <div class="stat"><strong>10+</strong><br>行业覆盖</div>
+    <div class="stat"><strong>7×12h</strong><br>运营支持</div>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="fade">核心业务</h2>
+
+  <div class="card fade">
+    <h3>账号代运营</h3>
+    <p>从0搭建账号体系，实现持续增长</p>
+  </div>
+
+  <div class="card fade">
+    <h3>短视频创意</h3>
+    <p>打造爆款内容模型</p>
+  </div>
+
+  <div class="card fade">
+    <h3>直播增长</h3>
+    <p>提升转化与成交效率</p>
+  </div>
+</section>
+
+<section id="cases">
+  <h2 class="fade">增长案例</h2>
+
+  <div class="card fade">
+    本地生活品牌A：3 个月搭建账号矩阵，单月内容曝光提升 220%，门店团购核销增长 3.1 倍。
+  </div>
+
+  <div class="card fade">
+    消费品牌B：通过“短视频种草 + 直播转化”联动，首场直播 GMV 超预期 168%，实现冷启动破圈。
+  </div>
+
+  <div class="card fade">
+    制造业品牌C：从 0 到 1 打造企业 IP，连续 8 周稳定产出行业垂类内容，线索成本下降约 35%。
   </div>
 </section>
 
 <section id="contact" class="fade">
-  <h2>联系</h2>
-  <div class="card">电话：138xxxx</div>
+  <h2>合作联系</h2>
+  <p>电话：17338791468</p>
+  <p>邮箱：yjn0423@126.com</p>
 </section>
 
 </main>
 
 <script>
-/* 动态header高度 */
-function setOffset(){
-  const h=document.querySelector("header").offsetHeight;
-  document.documentElement.style.scrollPaddingTop=h+"px";
-}
-window.addEventListener("load",setOffset);
-window.addEventListener("resize",setOffset);
-
-/* 动画 */
-const obs=new IntersectionObserver(e=>{
-  e.forEach(i=>{
-    if(i.isIntersecting){
-      i.target.classList.add("show");
+/* ===== 滚动动画 ===== */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show")
     }
-  });
-});
-document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
+  })
+})
 
-/* 导航高亮 */
-const sections=document.querySelectorAll("section");
-const links=document.querySelectorAll("nav a");
+document.querySelectorAll(".fade").forEach(el=>{
+  observer.observe(el)
+})
+
+/* ===== 导航高亮 ===== */
+const links = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll",()=>{
-  let cur="";
+  let scrollY = window.scrollY;
   sections.forEach(sec=>{
-    if(scrollY>=sec.offsetTop-120){
-      cur=sec.id;
+    if(scrollY >= sec.offsetTop-200){
+      links.forEach(a=>a.classList.remove("active"))
+      let id = sec.getAttribute("id")
+      let active = document.querySelector(`nav a[href="#${id}"]`)
+      if(active) active.classList.add("active")
     }
-  });
-  links.forEach(a=>{
-    a.classList.remove("active");
-    if(a.getAttribute("href")==="#"+cur){
-      a.classList.add("active");
-    }
-  });
-});
+  })
+})
 </script>
 
 </body>
